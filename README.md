@@ -1,24 +1,44 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a demo Rails 7.0 application used to demo certain features or test cool functionality.
 
-Things you may want to cover:
+# Setup
 
-* Ruby version
+```shell
+rails db:reset
+```
 
-* System dependencies
 
-* Configuration
+# Demos
 
-* Database creation
+## Database
 
-* Database initialization
+### Clustered index key size performance
 
-* How to run the test suite
+Reducing the size of an index key can lead to performance improvements.
 
-* Services (job queues, cache servers, search engines, etc.)
+Anything over 767 bytes (or, anything over VARCHAR(191) for UTF8MB4) has a performance hit
 
-* Deployment instructions
+Test this by seeding your database with a bunch of `articles` and `fast_articles`
 
-* ...
+```ruby
+ArticleFactory.new.generate(1_000_000)
+FastArticleFactory.new.generate(1_000_000)
+```
+
+`articles` have an `id` column which is `VARCHAR(255)`
+`fast_articles` have an `id` which is `VARCHAR(36)`
+
+Try the following queries and note the performance difference for each one
+
+```mysql
+SELECT COUNT(*) FROM articles;
+SELECT COUNT(*) FROM fast_articles
+```
+
+
+### B+ vs. Hash indexes
+Coming Soon
+
+### Covering Indexes
+Coming soon
