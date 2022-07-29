@@ -1,4 +1,4 @@
-class ArticleFactory
+class FastArticleFactory
   BLOCK_SIZE = 25_000
 
   def generate(number: 100_000)
@@ -10,15 +10,15 @@ class ArticleFactory
     start_time = Time.now
     iterations.times do |i|
       articles = article_arr(BLOCK_SIZE)
-      Article.insert_all(articles)
+      FastArticle.insert_all(articles)
       puts "Inserted #{(i + 1) * BLOCK_SIZE}"
     end
 
     articles = article_arr(leftover)
-    Article.insert_all(articles)
+    FastArticle.insert_all(articles)
 
     end_time = Time.now
-    puts "Created #{number} Articles in #{end_time - start_time} seconds"
+    puts "Created #{number} FastArticles in #{end_time - start_time} seconds"
   end
 
   private
