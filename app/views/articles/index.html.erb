@@ -1,7 +1,8 @@
 <h1>Articles</h1>
 
+<%== pagy_nav(@pagy) %>
 <ul>
-  <% @articles.each do |article| %>
+  <% @records.each do |article| %>
     <li>
       <%= article.title %>
     </li>

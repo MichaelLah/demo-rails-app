@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @pagy, @records = pagy(Article.all)
   end
 end

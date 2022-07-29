@@ -16,6 +16,7 @@ default: &default
   username: root
   password:
   socket: /tmp/mysql.sock
+  max_allowed_packet: '100M'
 
 development:
   <<: *default
