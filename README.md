@@ -5,9 +5,14 @@ This is a demo Rails 7.0 application used to demo certain features or test cool 
 # Setup
 
 ```shell
+bundle install
 rails db:reset
 ```
 
+Start the server:
+```shell
+rails s
+```
 
 # Demos
 
@@ -17,7 +22,7 @@ rails db:reset
 
 Reducing the size of an index key can lead to performance improvements.
 
-Anything over 767 bytes (or, anything over VARCHAR(191) for UTF8MB4) has a performance hit
+This demo shows the performance difference between a primary key that is a `VARCHAR(36)` vs `VARCHAR(255)`
 
 Test this by seeding your database with a bunch of `articles` and `fast_articles`
 
@@ -35,6 +40,13 @@ Try the following queries and note the performance difference for each one
 SELECT COUNT(*) FROM articles;
 SELECT COUNT(*) FROM fast_articles
 ```
+
+View these articles here:
+
+http://0.0.0.0:3300/articles
+
+http://0.0.0.0:3300/fast_articles
+
 
 
 ### B+ vs. Hash indexes
