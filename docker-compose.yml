@@ -6,10 +6,7 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
     ports:
-      - target: 3306
-        host_ip: 0.0.0.0
-        protocol: tcp
-        mode: host
+      - 3307:3306
     networks:
       - demo-rails-app
 
