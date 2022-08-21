@@ -24,9 +24,6 @@ RUN apt-get update -qq && apt-get install -y libmysqld-dev --force-yes default-m
 #   openssl
 
 
-
-
-
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
