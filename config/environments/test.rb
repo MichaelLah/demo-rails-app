@@ -57,4 +57,11 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  puts 'config?'
+  config.after_initialize do
+    t = Time.local(2008, 9, 1, 10, 5, 0)
+    Timecop.travel(t)
+    puts "traveled!"
+  end
 end
